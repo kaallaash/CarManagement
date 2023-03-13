@@ -1,4 +1,4 @@
-name: .NET CarPark
+name: .NET CarManagement
 
 on:
   push:
@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run:  dotnet restore CarPark.sln
+      run:  dotnet restore CarManagement.sln
     - name: Build
-      run: dotnet build CarPark.sln --no-restore
+      run: dotnet build CarManagement.sln --no-restore
     - name: Test
-      run: dotnet test CarPark.sln --no-build --verbosity normal
+      run: dotnet test CarManagement.sln --no-build --verbosity normal
