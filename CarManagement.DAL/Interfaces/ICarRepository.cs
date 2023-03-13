@@ -1,11 +1,4 @@
-﻿using CarManagement.DAL.Model;
-using CarManagement.Models.Car;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CarManagement.Models.Car;
 
 namespace CarManagement.DAL.Interfaces;
 
