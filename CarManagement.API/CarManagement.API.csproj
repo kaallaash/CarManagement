@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarManagement.DAL\CarManagement.DAL.csproj" />
+    <ProjectReference Include="..\CarManagement.BLL\CarManagement.BLL.csproj" />
     <ProjectReference Include="..\CarManagement.Migrations\CarManagement.Migrations.csproj" />
   </ItemGroup>
 
