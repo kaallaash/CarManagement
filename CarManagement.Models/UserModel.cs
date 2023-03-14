@@ -1,4 +1,4 @@
-﻿namespace CarManagement.Models.Authentication;
+﻿namespace CarManagement.Models;
 
 public class UserModel
 {

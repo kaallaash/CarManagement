@@ -39,7 +39,8 @@ public class CarRepository : ICarRepository
     public async Task<int> CreateAsync(CarCreateModel car)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
-        const string sql = "INSERT INTO Cars (Make, Model, Year, Color) VALUES (@Make, @Model, @Year, @Price); SELECT CAST(SCOPE_IDENTITY() as int)";
+        const string sql = "INSERT INTO Cars (Make, Model, Year, Price) VALUES (@Make, @Model, @Year, @Price);" +
+                           " SELECT CAST(SCOPE_IDENTITY() as int)";
         return await dbConnection.ExecuteScalarAsync<int>(sql, car);
     }
 
