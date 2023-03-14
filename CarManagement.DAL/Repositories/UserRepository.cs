@@ -45,7 +45,7 @@ public class UserRepository : IUserRepository
     public async Task<bool> DeleteAsync(int id)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
-        const string sql = "DELETE FROM Cars WHERE Id = @Id";
+        const string sql = "DELETE FROM Users WHERE Id = @Id";
         var affectedRows = await dbConnection.ExecuteAsync(sql, new { Id = id });
         return affectedRows > 0;
     }
