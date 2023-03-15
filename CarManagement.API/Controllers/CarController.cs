@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarManagement.API.Controllers;
 
+[ApiController]
+[Route("[controller]")]
 public class CarController : Controller
 {
     private readonly ICarService _carService;
@@ -21,8 +23,9 @@ public class CarController : Controller
         return await _carService.GetAllAsync();
     }
 
-    [HttpGet]
-    public async Task<IEnumerable<CarModel>> GetSome(int selectionEdge1, int selectionEdge2)
+    //[HttpGet("/selectionEdge1={selectionEdge1}&selectionEdge2={selectionEdge2}")]
+    [HttpGet("parameters")]
+    public async Task<IEnumerable<CarModel>> GetSome([FromQuery] int selectionEdge1, [FromQuery] int selectionEdge2)
     {
         return await _carService.GetSomeAsync(selectionEdge1, selectionEdge2);
     }
@@ -42,7 +45,7 @@ public class CarController : Controller
         return await _carService.CreateAsync(carCreateModel);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut]
     public async Task<bool> Update(int id,
         [FromBody] CarUpdateModel carUpdateModel)
     {
