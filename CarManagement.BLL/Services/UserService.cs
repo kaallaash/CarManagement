@@ -30,8 +30,8 @@ public class UserService : IUserService
         return await _userRepository.RegisterAsync(registerModel);
     }
 
-    public async Task<bool> UpdateAsync(RegisterModel registerModel)
+    public async Task<bool> UpdateAsync(int id, UserUpdateModel userUpdateModel)
     {
-        return await _userRepository.UpdateAsync(registerModel);
+        return await _userRepository.UpdateAsync(id, userUpdateModel);
     }
 }

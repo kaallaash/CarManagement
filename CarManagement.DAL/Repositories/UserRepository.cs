@@ -32,13 +32,25 @@ public class UserRepository : IUserRepository
         return await dbConnection.ExecuteScalarAsync<int>(sql, registerModel);
     }
 
-    public async Task<bool> UpdateAsync(RegisterModel registerModel)
+    public async Task<bool> UpdateAsync(int id, UserUpdateModel userUpdateModel)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
         const string sql = "UPDATE Users SET" +
-                           " Username = @Username, Password = @Password, Email = @Email, FirstName = @FirstName, LastName = @LastName" +
+                           " Username = @Username, Password = @Password, Email = @Email," +
+                           " FirstName = @FirstName, LastName = @LastName," +
+                           " RefreshToken = @RefreshToken, RefreshTokenExpiryTime = @RefreshTokenExpiryTime" +
                            " WHERE Id = @Id";
-        var affectedRows = await dbConnection.ExecuteAsync(sql, registerModel);
+        var affectedRows = await dbConnection.ExecuteAsync(sql, new
+        {
+            Id = id,
+            userUpdateModel.Username,
+            userUpdateModel.Password,
+            userUpdateModel.Email,
+            userUpdateModel.FirstName,
+            userUpdateModel.LastName,
+            userUpdateModel.RefreshToken,
+            userUpdateModel.RefreshTokenExpiryTime
+        });
         return affectedRows > 0;
     }
 

@@ -7,6 +7,6 @@ public interface IUserRepository
 {
     Task<UserModel> GetByLoginAsync(LoginModel loginModel);
     Task<int> RegisterAsync(RegisterModel registerModel);
-    Task<bool> UpdateAsync(RegisterModel registerModel);
+    Task<bool> UpdateAsync(int id, UserUpdateModel userUpdateModel);
     Task<bool> DeleteAsync(int id);
 }
