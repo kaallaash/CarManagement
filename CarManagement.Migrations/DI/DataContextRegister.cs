@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CarManagement.Migrations.DI;
 
-public static class DataAccessRegister
+public static class DataContextRegister
 {
     public static void AddDataContext(
         this IServiceCollection services,

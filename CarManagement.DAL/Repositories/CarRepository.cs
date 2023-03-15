@@ -10,9 +10,9 @@ public class CarRepository : ICarRepository
 {
     private readonly string _connectionString;
 
-    public CarRepository(string connectionString)
+    public CarRepository(IConnectionString connectionString)
     {
-        _connectionString = connectionString;
+        _connectionString = connectionString.Value;
     }
 
     public async Task<IEnumerable<CarModel>> GetAllAsync()
