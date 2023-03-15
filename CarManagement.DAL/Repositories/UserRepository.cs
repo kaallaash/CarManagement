@@ -11,9 +11,9 @@ public class UserRepository : IUserRepository
 {
     private readonly string _connectionString;
 
-    public UserRepository(string connectionString)
+    public UserRepository(IConnectionString connectionString)
     {
-        _connectionString = connectionString;
+        _connectionString = connectionString.Value;
     }
 
     public async Task<UserModel> GetByLoginAsync(LoginModel loginModel)
