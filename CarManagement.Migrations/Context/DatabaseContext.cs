@@ -1,5 +1,5 @@
-﻿using CarManagement.Models;
-using CarManagement.Models.Car;
+﻿using CarManagement.Models.Car;
+using CarManagement.Models.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarManagement.Migrations.Context;

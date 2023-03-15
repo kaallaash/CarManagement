@@ -1,9 +1,9 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using CarManagement.DAL.Interfaces;
-using CarManagement.Models;
 using Dapper;
 using CarManagement.Models.Authentication;
+using CarManagement.Models.User;
 
 namespace CarManagement.DAL.Repositories;
 

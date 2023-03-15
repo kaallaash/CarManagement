@@ -1,5 +1,5 @@
 ﻿using CarManagement.Models.Authentication;
-using CarManagement.Models;
+using CarManagement.Models.User;
 
 namespace CarManagement.BLL.Interfaces;
 

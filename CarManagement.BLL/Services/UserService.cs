@@ -1,7 +1,7 @@
 ﻿using CarManagement.BLL.Interfaces;
 using CarManagement.DAL.Interfaces;
-using CarManagement.Models;
 using CarManagement.Models.Authentication;
+using CarManagement.Models.User;
 
 namespace CarManagement.BLL.Services;
 

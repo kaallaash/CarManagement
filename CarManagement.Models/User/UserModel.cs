@@ -1,4 +1,4 @@
-﻿namespace CarManagement.Models;
+﻿namespace CarManagement.Models.User;
 
 public class UserModel
 {
