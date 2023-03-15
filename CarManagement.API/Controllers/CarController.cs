@@ -22,8 +22,7 @@ public class CarController : Controller
     {
         return await _carService.GetAllAsync();
     }
-
-    //[HttpGet("/selectionEdge1={selectionEdge1}&selectionEdge2={selectionEdge2}")]
+    
     [HttpGet("parameters")]
     public async Task<IEnumerable<CarModel>> GetSome([FromQuery] int selectionEdge1, [FromQuery] int selectionEdge2)
     {
@@ -35,9 +34,7 @@ public class CarController : Controller
     {
         return await _carService.GetByIdAsync(id);
     }
-
-
-
+    
     [HttpPost]
     public async Task<int> Create(
         [FromBody] CarCreateModel carCreateModel)
@@ -45,11 +42,11 @@ public class CarController : Controller
         return await _carService.CreateAsync(carCreateModel);
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     public async Task<bool> Update(int id,
         [FromBody] CarUpdateModel carUpdateModel)
     {
-        return await _carService.UpdateAsync(carUpdateModel);
+        return await _carService.UpdateAsync(id, carUpdateModel);
     }
 
     [HttpDelete("{id}")]
