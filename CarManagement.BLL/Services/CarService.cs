@@ -47,9 +47,9 @@ public class CarService : ICarService
         return await _carRepository.CreateAsync(car);
     }
 
-    public async Task<bool> UpdateAsync(CarUpdateModel car)
+    public async Task<bool> UpdateAsync(int id, CarUpdateModel car)
     {
-        return await _carRepository.UpdateAsync(car);
+        return await _carRepository.UpdateAsync(id, car);
     }
 
     public async Task<bool> DeleteAsync(int id)

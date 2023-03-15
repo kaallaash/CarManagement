@@ -44,11 +44,18 @@ public class CarRepository : ICarRepository
         return await dbConnection.ExecuteScalarAsync<int>(sql, car);
     }
 
-    public async Task<bool> UpdateAsync(CarUpdateModel car)
+    public async Task<bool> UpdateAsync(int id, CarUpdateModel car)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
         const string sql = "UPDATE Cars SET Make = @Make, Model = @Model, Year = @Year, Price = @Price WHERE Id = @Id";
-        var affectedRows = await dbConnection.ExecuteAsync(sql, car);
+        var affectedRows = await dbConnection.ExecuteAsync(sql, new
+        {
+            Id = id,
+            car.Make, 
+            car.Model,
+            car.Year,
+            car.Price 
+        });
         return affectedRows > 0;
     }
 
