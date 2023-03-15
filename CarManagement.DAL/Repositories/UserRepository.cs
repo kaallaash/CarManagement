@@ -16,18 +16,25 @@ public class UserRepository : IUserRepository
         _connectionString = connectionString.Value;
     }
 
-    public async Task<UserModel> GetByIdAsync(int id)
+    public async Task<UserModel?> GetByIdAsync(int id)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
         const string sql = "SELECT * FROM Users WHERE Id = @Id";
         return await dbConnection.QuerySingleOrDefaultAsync<UserModel>(sql, new { Id = id});
     }
 
-    public async Task<UserModel> GetByLoginAsync(LoginModel loginModel)
+    public async Task<UserModel?> GetByLoginAsync(LoginModel loginModel)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
         const string sql = "SELECT * FROM Users WHERE Username = @Username AND Password = @Password";
         return await dbConnection.QuerySingleOrDefaultAsync<UserModel>(sql, loginModel);
+    }
+
+    public async Task<UserModel?> GetByUsernameAsync(string username)
+    {
+        using IDbConnection dbConnection = new SqlConnection(_connectionString);
+        const string sql = "SELECT * FROM Users WHERE Username = @Username";
+        return await dbConnection.QuerySingleOrDefaultAsync<UserModel>(sql, new {Username = username });
     }
 
     public async Task<int> RegisterAsync(RegisterModel registerModel)

@@ -9,6 +9,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDataContext(builder.Configuration);
 builder.Services.AddBusinessLogicLayer(builder.Configuration);
+builder.Services
+    .AddAutoMapper(typeof(CarManagement.API.AutoMapper.MappingProfile));
 builder.Services.AddAuthentication(builder.Configuration);
 
 var app = builder.Build();

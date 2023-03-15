@@ -15,9 +15,14 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<UserModel> GetByLoginAsync(LoginModel loginModel)
+    public async Task<UserModel?> GetByLoginAsync(LoginModel loginModel)
     {
         return await _userRepository.GetByLoginAsync(loginModel);
+    }
+
+    public async Task<UserModel?> GetByUsernameAsync(string username)
+    {
+        return await _userRepository.GetByUsernameAsync(username);
     }
 
     public async Task<bool> DeleteAsync(int id)
