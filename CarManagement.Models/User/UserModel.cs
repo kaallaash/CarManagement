@@ -1,4 +1,4 @@
-﻿namespace CarManagement.Models;
+﻿namespace CarManagement.Models.User;
 
 public class UserModel
 {
@@ -8,4 +8,6 @@ public class UserModel
     public string Email { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string? RefreshToken { get; set; }
+    public DateTime RefreshTokenExpiryTime { get; set; }
 }

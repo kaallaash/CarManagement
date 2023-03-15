@@ -1,7 +1,7 @@
 ﻿using CarManagement.BLL.Interfaces;
 using CarManagement.DAL.Interfaces;
-using CarManagement.Models;
 using CarManagement.Models.Authentication;
+using CarManagement.Models.User;
 
 namespace CarManagement.BLL.Services;
 
@@ -15,9 +15,14 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<UserModel> GetByLoginAsync(LoginModel loginModel)
+    public async Task<UserModel?> GetByLoginAsync(LoginModel loginModel)
     {
         return await _userRepository.GetByLoginAsync(loginModel);
+    }
+
+    public async Task<UserModel?> GetByUsernameAsync(string username)
+    {
+        return await _userRepository.GetByUsernameAsync(username);
     }
 
     public async Task<bool> DeleteAsync(int id)
@@ -30,8 +35,8 @@ public class UserService : IUserService
         return await _userRepository.RegisterAsync(registerModel);
     }
 
-    public async Task<bool> UpdateAsync(RegisterModel registerModel)
+    public async Task<bool> UpdateAsync(int id, UserUpdateModel userUpdateModel)
     {
-        return await _userRepository.UpdateAsync(registerModel);
+        return await _userRepository.UpdateAsync(id, userUpdateModel);
     }
 }
