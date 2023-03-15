@@ -16,6 +16,13 @@ public class UserRepository : IUserRepository
         _connectionString = connectionString.Value;
     }
 
+    public async Task<UserModel> GetByIdAsync(int id)
+    {
+        using IDbConnection dbConnection = new SqlConnection(_connectionString);
+        const string sql = "SELECT * FROM Users WHERE Id = @Id";
+        return await dbConnection.QuerySingleOrDefaultAsync<UserModel>(sql, new { Id = id});
+    }
+
     public async Task<UserModel> GetByLoginAsync(LoginModel loginModel)
     {
         using IDbConnection dbConnection = new SqlConnection(_connectionString);
