@@ -87,7 +87,7 @@ public class TokenController : Controller
 
         var user = await _userService.GetByUsernameAsync(userName);
 
-        if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+        if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime >= DateTime.Now)
         {
             return BadRequest("Invalid access token or refresh token");
         }
