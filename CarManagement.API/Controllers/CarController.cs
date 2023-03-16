@@ -1,11 +1,13 @@
 ﻿using CarManagement.BLL.Interfaces;
 using CarManagement.Models.Car;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarManagement.API.Controllers;
 
+[Authorize]
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class CarController : Controller
 {
     private readonly ICarService _carService;
